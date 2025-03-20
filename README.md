@@ -18,7 +18,7 @@ An IntelliJ IDEA plugin that helps you create context-rich prompts for AI assist
 ## Installation
 
 ### Manual Installation
-1. Download the latest release (.zip file) from the [Releases page](https://github.com/yourusername/intellij-ai-prompt-generator/releases)
+1. Download the latest release (.zip file) from the [Releases page](https://github.com/Keksuccino/IntelliJ-AI-Prompt-Generator/releases)
 2. In IntelliJ IDEA, go to Settings/Preferences → Plugins
 3. Click the gear icon and select "Install Plugin from Disk..."
 4. Navigate to the downloaded .zip file and click "OK"
