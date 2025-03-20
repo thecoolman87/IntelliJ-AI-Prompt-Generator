@@ -1,10 +1,11 @@
 plugins {
     id 'java'
     id 'org.jetbrains.intellij' version '1.17.0'
+    id 'idea'
 }
 
 group = "de.keksuccino.aiprompt"
-version = "1.0.3"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -16,13 +17,13 @@ dependencies {
 }
 
 intellij {
-    version = '2024.3'  // Matches your IntelliJ version
-    type = 'IC'  // Community Edition
+    version = '2024.3'
+    type = 'IC'
     plugins = ['com.intellij.java']
 }
 
 patchPluginXml {
-    sinceBuild = '243'  // For IntelliJ 2024.3
+    sinceBuild = '243'
     untilBuild = '243.*'
 }
 
@@ -41,3 +42,39 @@ tasks {
         jvmArgs = ['-Xmx2g']
     }
 }
+
+// Configure IntelliJ IDEA to recognize generated sources
+idea {
+    module {
+        sourceDirs += file("${buildDir}/generated-src")
+        generatedSourceDirs += file("${buildDir}/generated-src")
+    }
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+// Create a task to copy and modify the VersionTemplate.javaTemplate file and rename it to Version.java
+task generateVersionClass(type: Copy) {
+    from 'src/main/java/de/keksuccino/promptgenerator/util/VersionTemplate.javaTemplate'
+    into "${buildDir}/generated-src/de/keksuccino/promptgenerator/util"
+    rename('VersionTemplate.javaTemplate', 'Version.java')
+    filter(ReplaceTokens, tokens: [VERSION: project.version, CLASSNAME: 'Version'])
+}
+
+// Ensure the target directory exists before copying
+tasks.generateVersionClass.doFirst {
+    mkdir "${buildDir}/generated-src/de/keksuccino/promptgenerator/util"
+}
+
+// Add the generated source directory to the source sets and exclude the template file
+sourceSets {
+    main {
+        java {
+            srcDir "${buildDir}/generated-src" // Include generated sources
+            exclude 'de/keksuccino/promptgenerator/util/VersionTemplate.javaTemplate'
+        }
+    }
+}
+
+// Make sure compileJava depends on our version generation task
+compileJava.dependsOn generateVersionClass

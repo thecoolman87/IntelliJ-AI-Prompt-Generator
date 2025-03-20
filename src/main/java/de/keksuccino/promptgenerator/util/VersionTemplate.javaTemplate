@@ -1,0 +1,6 @@
+package de.keksuccino.promptgenerator.util;
+
+public class @CLASSNAME@ {
+    // This will be replaced during build
+    public static final String VERSION = "@VERSION@";
+}

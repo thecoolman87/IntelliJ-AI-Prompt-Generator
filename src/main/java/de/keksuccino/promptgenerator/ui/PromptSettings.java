@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @State(
         name = "AIPromptGeneratorSettings",
@@ -26,6 +28,9 @@ public class PromptSettings implements PersistentStateComponent<PromptSettings.S
         // Class-only mode settings
         public boolean projectPanelClassOnly = false;
         public boolean additionalPanelClassOnly = false;
+
+        // Templates
+        public Map<String, PromptTemplate> templates = new HashMap<>();
     }
 
     private State myState = new State();
@@ -100,6 +105,27 @@ public class PromptSettings implements PersistentStateComponent<PromptSettings.S
         } else if (ADDITIONAL_PANEL_ID.equals(panelId)) {
             myState.additionalFilePaths = new ArrayList<>(paths);
         }
+    }
+
+    // Template management methods
+    public Map<String, PromptTemplate> getTemplates() {
+        return myState.templates;
+    }
+
+    public void saveTemplate(PromptTemplate template) {
+        myState.templates.put(template.getName(), template);
+    }
+
+    public void deleteTemplate(String name) {
+        myState.templates.remove(name);
+    }
+
+    public List<String> getTemplateNames() {
+        return new ArrayList<>(myState.templates.keySet());
+    }
+
+    public PromptTemplate getTemplate(String name) {
+        return myState.templates.get(name);
     }
 
     // Constant panel IDs
