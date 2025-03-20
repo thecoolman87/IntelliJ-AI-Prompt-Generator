@@ -2,7 +2,7 @@
 
 An IntelliJ IDEA plugin that helps you create context-rich prompts for AI assistants by easily including code from your project.
 
-<img width="754" alt="Screenshot_2" src="https://github.com/user-attachments/assets/bb406dd9-6ed6-493b-ad2c-84418ee3ec14" />
+<img width="793" alt="Screenshot_3" src="https://github.com/user-attachments/assets/2a244cc6-c93d-47f1-941e-3f524f045111" />
 
 ## Features
 
@@ -11,8 +11,9 @@ An IntelliJ IDEA plugin that helps you create context-rich prompts for AI assist
 - **Class-Only Mode**: Toggle between class-only browsing and general file selection
 - **Multi-Selection Support**: Add multiple files at once, including entire directories recursively
 - **File Type Icons**: Visual indicators to easily identify different file types
+- **Template System**: Save and load prompt templates to reuse configurations across different projects
 - **Convenient Access**: Right-click in any file to open the prompt generator
-- **Persistent Settings**: Your selections and preferences are saved across IDE sessions
+- **Persistent Settings**: Your selections, preferences, and templates are saved across IDE sessions
 - **Customizable Headers**: Configure section headers to match your preferred AI prompt format
 
 ## Installation
@@ -38,6 +39,25 @@ An IntelliJ IDEA plugin that helps you create context-rich prompts for AI assist
 4. **Generate Prompt**: Click "Generate and Copy to Clipboard" to create your formatted prompt
 5. **Paste into AI**: The formatted prompt is now ready to paste into your AI assistant of choice
 
+### Using Templates
+
+Templates allow you to save and reuse your prompt configurations:
+
+1. **Save a Template**:
+   - Set up your prompt with the desired files and settings
+   - Click "Save Current as Template"
+   - Enter a name for your template
+   
+2. **Load a Template**:
+   - Select a previously saved template from the dropdown
+   - All settings and files will be restored automatically
+   
+3. **Delete a Template**:
+   - Select a template from the dropdown
+   - Click "Delete Template" to remove it
+
+Templates are perfect for different scenarios like "Bug Fixing", "Code Review", "Feature Implementation", etc.
+
 ### Smart Selection Tips
 
 - **Project Files**: Add core files that are central to your question
@@ -52,6 +72,8 @@ Access plugin settings via the gear icon in the prompt generator dialog:
 - **Prompt Section Headers**: Customize the prompt section headers for project files and additional context
 - **Default Prompt**: Set a default prompt head that appears each time you open the generator
 
-## License
+## Copyright & License
+
+Copyright © 2025 Keksuccino.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
