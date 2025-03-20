@@ -70,7 +70,6 @@ Templates are perfect for different scenarios like "Bug Fixing", "Code Review", 
 Access plugin settings via the gear icon in the prompt generator dialog:
 
 - **Prompt Section Headers**: Customize the prompt section headers for project files and additional context
-- **Default Prompt**: Set a default prompt head that appears each time you open the generator
 
 ## Copyright & License
 
