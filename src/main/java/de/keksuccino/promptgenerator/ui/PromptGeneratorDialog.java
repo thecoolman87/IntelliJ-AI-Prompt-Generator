@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PromptGeneratorDialog extends DialogWrapper {
     private final Project project;
@@ -29,6 +30,10 @@ public class PromptGeneratorDialog extends DialogWrapper {
     private JComboBox<String> templateComboBox;
     private JButton saveTemplateButton;
     private JButton deleteTemplateButton;
+    private JButton generateButton;
+
+    // Reference to track if loading is in progress
+    private final AtomicBoolean isLoading = new AtomicBoolean(false);
 
     public PromptGeneratorDialog(Project project, PsiFile currentFile) {
         super(project);
@@ -152,6 +157,10 @@ public class PromptGeneratorDialog extends DialogWrapper {
                 false,
                 PromptSettings.ADDITIONAL_PANEL_ID);
 
+        // Set dialog references
+        projectFilesPanel.setDialogReference(this);
+        additionalFilesPanel.setDialogReference(this);
+
         fileSelectionPanel.add(projectFilesPanel);
         fileSelectionPanel.add(additionalFilesPanel);
 
@@ -173,6 +182,12 @@ public class PromptGeneratorDialog extends DialogWrapper {
         mainPanel.add(settingsButtonPanel, BorderLayout.NORTH);
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
+        // Load content asynchronously after UI is created
+        SwingUtilities.invokeLater(() -> {
+            projectFilesPanel.loadSavedSelectionsAsync();
+            additionalFilesPanel.loadSavedSelectionsAsync();
+        });
+
         return mainPanel;
     }
 
@@ -182,7 +197,7 @@ public class PromptGeneratorDialog extends DialogWrapper {
         buttonPanel.setBorder(JBUI.Borders.empty(8));
 
         // Generate button in center
-        JButton generateButton = new JButton("Generate and Copy to Clipboard");
+        generateButton = new JButton("Generate and Copy to Clipboard");
         generateButton.addActionListener(e -> generateAndCopy());
 
         // Version label in bottom-left
@@ -210,6 +225,29 @@ public class PromptGeneratorDialog extends DialogWrapper {
         buttonPanel.add(bottomInfoPanel, BorderLayout.SOUTH);
 
         return buttonPanel;
+    }
+
+    // Method to enable/disable all controls
+    public void setControlsEnabled(boolean enabled) {
+        // Main buttons
+        promptHeadArea.setEnabled(enabled);
+        templateComboBox.setEnabled(enabled);
+        saveTemplateButton.setEnabled(enabled);
+        generateButton.setEnabled(enabled);
+        deleteTemplateButton.setEnabled(enabled && templateComboBox.getItemCount() > 0);
+
+        // Child panels might already be disabled by their own loading state
+        if (enabled) {
+            if (!projectFilesPanel.isLoading.get()) {
+                projectFilesPanel.setControlsEnabled(true);
+            }
+            if (!additionalFilesPanel.isLoading.get()) {
+                additionalFilesPanel.setControlsEnabled(true);
+            }
+        } else {
+            projectFilesPanel.setControlsEnabled(false);
+            additionalFilesPanel.setControlsEnabled(false);
+        }
     }
 
     private void updateTemplatesList() {
@@ -356,11 +394,21 @@ public class PromptGeneratorDialog extends DialogWrapper {
                     false,
                     PromptSettings.ADDITIONAL_PANEL_ID);
 
+            // Set dialog references
+            projectFilesPanel.setDialogReference(this);
+            additionalFilesPanel.setDialogReference(this);
+
             parent.add(projectFilesPanel, index);
             parent.add(additionalFilesPanel, index + 1);
 
             parent.revalidate();
             parent.repaint();
+
+            // Load content asynchronously
+            SwingUtilities.invokeLater(() -> {
+                projectFilesPanel.loadSavedSelectionsAsync();
+                additionalFilesPanel.loadSavedSelectionsAsync();
+            });
         }
     }
 
@@ -376,6 +424,16 @@ public class PromptGeneratorDialog extends DialogWrapper {
     }
 
     private void generateAndCopy() {
+        // Check if we're still loading files
+        if (projectFilesPanel.isLoading.get() || additionalFilesPanel.isLoading.get()) {
+            Messages.showWarningDialog(
+                    project,
+                    "Files are still loading. Please wait until loading is complete.",
+                    "Loading in Progress"
+            );
+            return;
+        }
+
         // Save prompt head
         savePromptHead();
 

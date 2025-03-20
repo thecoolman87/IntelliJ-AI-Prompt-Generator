@@ -1,8 +1,18 @@
 <idea-plugin>
     <id>de.keksuccino.aiprompt</id>
     <name>AI Prompt Generator</name>
-    <vendor>AI Prompt Generator</vendor>
-    <description>Generate AI prompts with context from project files</description>
+    <vendor>Keksuccino</vendor>
+    <description><![CDATA[
+<p>Generate AI prompts with smart context extraction from your code.</p>
+<p><b>Features:</b></p>
+<ul>
+  <li>Automatically finds source files for better context</li>
+  <li>Organizes content into project and additional context</li>
+  <li>Saves/loads templates for repeated use</li>
+  <li>Custom prompt head for precise AI guidance</li>
+</ul>
+<p>Get more accurate AI assistance for your coding challenges with properly structured context.</p>
+]]></description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
