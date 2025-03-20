@@ -1,0 +1,23 @@
+<idea-plugin>
+    <id>de.keksuccino.aiprompt</id>
+    <name>AI Prompt Generator</name>
+    <vendor>AI Prompt Generator</vendor>
+    <description>Generate AI prompts with context from project files</description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectService
+                serviceImplementation="de.keksuccino.promptgenerator.ui.PromptSettings"/>
+    </extensions>
+
+    <actions>
+        <action id="AIPrompt.GenerateAction"
+                class="de.keksuccino.promptgenerator.action.GeneratePromptAction"
+                text="Generate AI Prompt with Context"
+                description="Generate an AI prompt with context from files">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

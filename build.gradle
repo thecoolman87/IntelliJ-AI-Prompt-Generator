@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.0'
+}
+
+group = "de.keksuccino.aiprompt"
+version = "1.0.3"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+intellij {
+    version = '2024.3'  // Matches your IntelliJ version
+    type = 'IC'  // Community Edition
+    plugins = ['com.intellij.java']
+}
+
+patchPluginXml {
+    sinceBuild = '243'  // For IntelliJ 2024.3
+    untilBuild = '243.*'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+tasks {
+    // Configure the run task for testing the plugin
+    runIde {
+        jvmArgs = ['-Xmx2g']
+    }
+}
