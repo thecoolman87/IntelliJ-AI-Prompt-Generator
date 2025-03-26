@@ -423,7 +423,14 @@ public class PromptGeneratorDialog extends DialogWrapper {
         settings.setPromptHead(promptHeadText);
     }
 
+    @Override
+    public void doCancelAction() {
+        this.savePromptHead();
+        super.doCancelAction();
+    }
+
     private void generateAndCopy() {
+
         // Check if we're still loading files
         if (projectFilesPanel.isLoading.get() || additionalFilesPanel.isLoading.get()) {
             Messages.showWarningDialog(
@@ -464,5 +471,7 @@ public class PromptGeneratorDialog extends DialogWrapper {
 
         Messages.showInfoMessage("Prompt copied to clipboard!", "Success");
         close(OK_EXIT_CODE);
+
     }
+
 }
